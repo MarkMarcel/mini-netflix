@@ -1,1 +1,8 @@
-<p>movie-section works!</p>
+<section>
+    <h4>{{movieSection.title}}</h4>
+    <div >
+        <app-movie *ngFor="let movie of movieSection.movies">{{movie.title}}</app-movie>
+    </div>
+</section>
+
+
