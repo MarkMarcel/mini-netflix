@@ -27,10 +27,9 @@ export class MovieDetailsComponent implements OnInit {
   private getMovie(id:Number){
     this.movie = this.dbService.movies
                     .find( 
-                      movie => movie.sectionId == id
+                      movie => movie.id == id
                       );
-    
-    console.log(this.movie);                 
+                  
   }
 
 }

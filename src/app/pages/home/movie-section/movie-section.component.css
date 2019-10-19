@@ -2,6 +2,11 @@
     position: relative;
     top: 0;
     left: 0;
+    padding-left: 5px;
+}
+
+.movie-section-heading{
+    margin: 10px;
 }
 @media only screen and (max-width:992px){
    .container{
@@ -36,14 +41,14 @@
 
  .arrow-left {
      position: absolute;
-     top: 146.25px;
+     top: calc(45% - 35px);
      left: 5px;
      z-index: 10;
  }
 
  .arrow-right {
     position: absolute;
-    top: 146.25px;
+    top: calc(45% - 35px);
     right: 5px;
     z-index: 10;
 }
