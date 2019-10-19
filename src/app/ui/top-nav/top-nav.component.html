@@ -5,7 +5,8 @@
   </div>
   <form id="searchForm"  class="navbar-form navbar-right" (ngSubmit)= "searchMovies(searchTerm)" >
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search Movies" >
+        <input type="text" class="form-control" placeholder="Search Movies" [(ngModel)]="searchTerm"
+          name="searchTerm">
       </div>
       <button class="btn btn-default" >
         Search

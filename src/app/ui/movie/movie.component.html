@@ -1,8 +1,8 @@
-<div>
-    <img [src] ="movie.imageSrc" style="height: 60%; width: 100%;">
+<div style="height: 322.5px">
+    <img [routerLink]="['/movie-details',+movie.sectionId]" [src] ="movie.imageSrc" style="height: 60%; width: 100%;">
     <div>
-        <h6>{{movie.title}}</h6>
-        <span style="display: inline-block;">{{movie.productionYear}}</span>
+        <h6 [routerLink]="['/movie-details',+movie.sectionId]">{{movie.title}}</h6>
+        <span style="display: inline-block;" [routerLink]="['/movie-details',+movie.sectionId]">{{movie.productionYear}}</span>
         <hr>
         <svg  *ngIf="!movie.isLiked" (click)="likeMovie()"
             id="Capa_1" 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchMoviesService } from 'src/app/services/search-movies.service';
 
 @Component({
   selector: 'app-top-nav',
@@ -8,13 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class TopNavComponent implements OnInit {
   searchTerm:String ="";
 
-  constructor() { }
+  constructor(
+    private searchMoviesService:SearchMoviesService) { 
+
+    }
 
   ngOnInit() {
   }
 
   searchMovies(searchTerm){
-    
+    this.searchMoviesService.findMovies(searchTerm);
   }
 
 }
