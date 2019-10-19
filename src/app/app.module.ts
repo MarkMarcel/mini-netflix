@@ -8,6 +8,7 @@ import { MovieSectionComponent } from './pages/home/movie-section/movie-section.
 import { MovieDetailsComponent } from './pages/movie-details/movie-details.component';
 import { FavouritesComponent } from './pages/favourites/favourites.component';
 import { MovieComponent } from './ui/movie/movie.component';
+import { TopNavComponent } from './ui/top-nav/top-nav.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MovieComponent } from './ui/movie/movie.component';
     MovieSectionComponent,
     MovieDetailsComponent,
     FavouritesComponent,
-    MovieComponent
+    MovieComponent,
+    TopNavComponent
   ],
   imports: [
     BrowserModule,

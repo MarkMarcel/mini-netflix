@@ -1,6 +1,7 @@
 import {Movie} from './movie'
 
 export interface MovieSection{
-    title:String
-    movies:Movie[]
+    id:Number;
+    title:String;
+    movies:Movie[];
 }

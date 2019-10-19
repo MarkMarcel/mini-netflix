@@ -1,0 +1,14 @@
+<nav class="navbar bg-dark">
+  <div class="nav navbar">
+      <a class="navbar-brand" href="">Logo</a>
+      <a [routerLink]="['/favourites']" >Favourites</a>
+  </div>
+  <form id="searchForm"  class="navbar-form navbar-right" (ngSubmit)= "searchMovies(searchTerm)" >
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search Movies" >
+      </div>
+      <button class="btn btn-default" >
+        Search
+      </button>
+  </form>
+  </nav>

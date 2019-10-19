@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MovieSection} from './../../models/movie-section'
+import { DbService } from 'src/app/services/db.service';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +8,22 @@ import {MovieSection} from './../../models/movie-section'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  movieSections:MovieSection[] = [
-    {title:"Herh",movies:[{title:"Lil way",productionYear:"2012",imageSrc:"https://i.ytimg.com/vi/H6KLwJshR8k/maxresdefault.jpg"}]},
-    {title:"Gyai",movies:[{title:"Lil way",productionYear:"2012",imageSrc:"https://i.ytimg.com/vi/H6KLwJshR8k/maxresdefault.jpg"}]}
-  ]
-  constructor() { }
+  movieSections:MovieSection[]; 
+  constructor(private dbService:DbService) {}
 
   ngOnInit() {
+    this.movieSections = this.dbService.movieSections;
+    this.getMovies();
+  }
+
+  getMovies(){
+    this.movieSections.forEach((movieSection,index) => {
+      this.movieSections[index].movies = this.dbService.movies.filter(
+        (movie) => {
+          return movieSection.id == movie.sectionId;
+        }
+      );
+    });
   }
 
 }

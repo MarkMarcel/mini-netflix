@@ -1,7 +1,7 @@
-<section>
+<section >
     <h4>{{movieSection.title}}</h4>
-    <div >
-        <app-movie *ngFor="let movie of movieSection.movies">{{movie.title}}</app-movie>
+    <div class="container">
+        <app-movie *ngFor="let movie of movieSection.movies" [movie]="movie">{{movie.title}}</app-movie>
     </div>
 </section>
 
