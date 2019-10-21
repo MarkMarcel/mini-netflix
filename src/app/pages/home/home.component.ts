@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.movieSections = this.dbService.movieSections;
+    this.movieSections = this.dbService.getSections();
     this.getMovies();
   }
 
@@ -27,8 +27,9 @@ export class HomeComponent implements OnInit {
   }
 
   getMovies(){
+    let movies = this.dbService.getMovies();
     this.movieSections.forEach((movieSection,index) => {
-      this.movieSections[index].movies = this.dbService.movies.filter(
+      this.movieSections[index].movies = movies.filter(
         (movie) => {
           return movieSection.id == movie.sectionId;
         }

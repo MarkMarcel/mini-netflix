@@ -8,7 +8,7 @@ import { DbService } from 'src/app/services/db.service';
   styleUrls: ['./favourites.component.css']
 })
 export class FavouritesComponent implements OnInit {
-  movies:Movie[]
+  favouriteMovies:Movie[]
   constructor(
     private dbService:DbService
     ) {
@@ -16,11 +16,7 @@ export class FavouritesComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.movies = this.dbService.favourites;
-  }
-
-  private handleSearch(searchTerm:String){
-    console.log(searchTerm)
+    this.favouriteMovies = this.dbService.getFavourites();
   }
 
 }

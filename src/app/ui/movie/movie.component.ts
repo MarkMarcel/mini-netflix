@@ -16,13 +16,11 @@ export class MovieComponent implements OnInit {
 
   likeMovie(){
     this.movie.isLiked = true;
-    this.dbService.favourites.unshift(this.movie);
+    this.dbService.addToFavourites(this.movie);
   }
 
   unlikeMovie(){
     this.movie.isLiked = false;
-    let index = this.dbService.favourites.indexOf(this.movie)
-    if(index > -1)
-      this.dbService.favourites.splice(0,1);
+    this.dbService.removeFromFavourites(this.movie);
   }
 }

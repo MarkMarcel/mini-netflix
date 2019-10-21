@@ -6,7 +6,6 @@ import { Movie } from '../models/movie';
   providedIn: 'root'
 })
 export class DbService {
-
   movieSections:MovieSection[] = [
     {id:0, title:"Action", movies:[]},
     {id:1, title:"Romance", movies:[]}
@@ -25,7 +24,64 @@ export class DbService {
 
   favourites:Movie[] = [];
 
-  constructor() {
-  
+   initialise(){
+    if(!localStorage.favourites)
+      localStorage.setItem('sections',JSON.stringify(this.movieSections));
+
+    if(!localStorage.favourites)
+      localStorage.setItem('movies',JSON.stringify(this.movies));
+
+    if(!localStorage.favourites)
+      localStorage.setItem('favourites',JSON.stringify(this.favourites));
    }
+
+   getSections() : MovieSection[]{
+      let movieSections:MovieSection[] = JSON.parse(localStorage.getItem('sections'));
+      return movieSections;
+   }
+
+   getMovies() : Movie[]{
+    let movies:Movie[] = JSON.parse(localStorage.getItem('movies'));
+    return movies;
+   }
+
+   updateMovies(movie:Movie){
+      let movies = this.getMovies();
+      let index = this.getMovieIndex(movie,movies);
+      movies[index] = movie;
+      localStorage.setItem('movies',JSON.stringify(movies));
+   }
+
+   addToFavourites(movie:Movie){
+      let favouriteMovies = this.getFavourites();
+      favouriteMovies.unshift(movie)
+      this.saveFavourites(favouriteMovies);
+      this.updateMovies(movie);
+   }
+
+   removeFromFavourites(movie:Movie){
+    let favouriteMovies = this.getFavourites();
+    let index = this.getMovieIndex(movie,favouriteMovies);
+    if(index > -1)
+      favouriteMovies.splice(index,index);
+    this.saveFavourites(favouriteMovies);  
+    this.updateMovies(movie);
+   }
+
+   getFavourites():Movie[]{
+     let favouriteMovies:Movie[] = JSON.parse(localStorage.getItem('favourites'));
+     return favouriteMovies;
+   }
+
+   saveFavourites(favouriteMovies:Movie[]){
+    localStorage.setItem('favourites',JSON.stringify(favouriteMovies));
+   }
+
+   getMovieIndex(movie:Movie, moviesArray:Movie[]):number{
+      let oldMovie = moviesArray.filter(
+            paramMovie => movie.id == paramMovie.id
+      )
+      return moviesArray.indexOf(oldMovie[0]);
+   }
+
 }

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Movie } from 'src/app/models/movie';
 import { DbService } from 'src/app/services/db.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movie-details',
@@ -11,6 +12,7 @@ import { DbService } from 'src/app/services/db.service';
 })
 export class MovieDetailsComponent implements OnInit {
   movie:Movie;
+  movieObservable:Observable<Movie>;
 
   constructor(
     private router:Router,
@@ -21,15 +23,21 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getMovie(this.route.snapshot.params['id'])
+    this.movieObservable = this.route.paramMap.pipe(
+      map((params: ParamMap) =>
+        this.getMovie(+params.get('id')))
+    );
+
+    this.movieObservable.subscribe(movie => this.movie = movie)
   }
 
-  private getMovie(id:Number){
-    this.movie = this.dbService.movies
+  private getMovie(id:number) : Movie{
+    let movie = this.dbService.movies
                     .find( 
                       movie => movie.id == id
                       );
-                  
+
+    return movie              
   }
 
 }
