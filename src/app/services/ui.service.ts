@@ -12,6 +12,15 @@ export class UiService {
     if(width < 992)
       this.numberOfMoviesPerScreen = 3;
     else 
-      this.numberOfMoviesPerScreen = 4  
+      this.numberOfMoviesPerScreen = Math.floor(width/344) + 1;   
+  }
+
+  resetGridColumns(){
+    const lists = document.querySelectorAll('.container');
+    lists.forEach((el:HTMLElement) => {
+      const listItems = el.querySelectorAll('li');
+      const n = el.children.length;
+      el.style.setProperty('--total', this.numberOfMoviesPerScreen.toString());
+    });
   }
 }

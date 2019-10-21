@@ -11,6 +11,5 @@ if (environment.production) {
 const dbService = new DbService();
 dbService.initialise();
 
-console.log('Main called');
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
