@@ -1,6 +1,6 @@
 export interface Movie{
     id:number
-    sectionId:Number;
+    sectionId:number;
     imageSrc:String;
     title:String;
     productionYear:String;
