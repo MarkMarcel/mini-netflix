@@ -3,7 +3,7 @@
     <div class="container">
         <app-movie class="movie" *ngFor="let movie of moviesToMakeVisible" [movie]="movie">{{movie.title}}</app-movie>
     </div>
-    <svg class="arrow-left" height="30" width="30" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    <svg class="arrow-left" height="50" width="50" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         viewBox="0 0 490.88 490.88" style="enable-background:new 0 0 490.88 490.88;" xml:space="preserve"
         (click)="scrollLeft()"
         *ngIf="showLeftArrow">
@@ -16,7 +16,7 @@
             </g>
         </g>
     </svg>
-    <svg class="arrow-right" height="30" width="30" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    <svg class="arrow-right" height="50" width="50" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 490.88 490.88" style="enable-background:new 0 0 490.88 490.88;" xml:space="preserve"
             (click)="scrollRight()"
             *ngIf="showRightArrow">
