@@ -31,23 +31,23 @@ export class DbService {
   favourites:Movie[] = [];
 
    initialise(){
-    if(!localStorage.sections)
-      localStorage.setItem('sections',JSON.stringify(this.movieSections));
+    if(!sessionStorage.sections)
+      sessionStorage.setItem('sections',JSON.stringify(this.movieSections));
 
-    if(!localStorage.movies)
-      localStorage.setItem('movies',JSON.stringify(this.movies));
+    if(!sessionStorage.movies)
+      sessionStorage.setItem('movies',JSON.stringify(this.movies));
 
-    if(!localStorage.favourites)
-      localStorage.setItem('favourites',JSON.stringify(this.favourites));
+    if(!sessionStorage.favourites)
+      sessionStorage.setItem('favourites',JSON.stringify(this.favourites));
    }
 
    getSections() : MovieSection[]{
-      let movieSections:MovieSection[] = JSON.parse(localStorage.getItem('sections'));
+      let movieSections:MovieSection[] = JSON.parse(sessionStorage.getItem('sections'));
       return movieSections;
    }
 
    getMovies() : Movie[]{
-    let movies:Movie[] = JSON.parse(localStorage.getItem('movies'));
+    let movies:Movie[] = JSON.parse(sessionStorage.getItem('movies'));
     return movies;
    }
 
@@ -55,7 +55,7 @@ export class DbService {
       let movies = this.getMovies();
       let index = this.getMovieIndex(movie,movies);
       movies[index] = movie;
-      localStorage.setItem('movies',JSON.stringify(movies));
+      sessionStorage.setItem('movies',JSON.stringify(movies));
    }
 
    addToFavourites(movie:Movie){
@@ -75,12 +75,12 @@ export class DbService {
    }
 
    getFavourites():Movie[]{
-     let favouriteMovies:Movie[] = JSON.parse(localStorage.getItem('favourites'));
+     let favouriteMovies:Movie[] = JSON.parse(sessionStorage.getItem('favourites'));
      return favouriteMovies;
    }
 
    saveFavourites(favouriteMovies:Movie[]){
-    localStorage.setItem('favourites',JSON.stringify(favouriteMovies));
+    sessionStorage.setItem('favourites',JSON.stringify(favouriteMovies));
    }
 
    getMovieIndex(movie:Movie, moviesArray:Movie[]):number{
