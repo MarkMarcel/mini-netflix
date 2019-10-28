@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Observable, Subject} from 'rxjs'
 import { MovieSection } from '../models/movie-section';
 import { Movie } from '../models/movie';
 
@@ -6,6 +7,7 @@ import { Movie } from '../models/movie';
   providedIn: 'root'
 })
 export class DbService {
+  auth = new Subject<boolean>();
   movieSections:MovieSection[] = [
     {id:0, title:"Action", movies:[]},
     {id:1, title:"Romance", movies:[]},

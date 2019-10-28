@@ -11,6 +11,7 @@ import { MovieComponent } from './ui/movie/movie.component';
 import { TopNavComponent } from './ui/top-nav/top-nav.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SearchResultsComponent } from './ui/search-results/search-results.component';
+import { SigninComponent } from './pages/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SearchResultsComponent } from './ui/search-results/search-results.compo
     FavouritesComponent,
     MovieComponent,
     TopNavComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    SigninComponent
   ],
   entryComponents:[
     SearchResultsComponent
